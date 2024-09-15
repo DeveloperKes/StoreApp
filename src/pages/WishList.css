@@ -1,0 +1,12 @@
+ion-item.product {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    row-gap: 1rem;
+}
+
+ion-img.product__image {
+    width: 7rem;
+    border-radius: 10px;
+    overflow: hidden;
+}

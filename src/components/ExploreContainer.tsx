@@ -1,15 +1,31 @@
-import './ExploreContainer.css';
-
+import "./ExploreContainer.css";
+import {
+  IonCard,
+  IonCardHeader,
+  IonCardContent,
+  IonCardSubtitle,
+  IonCardTitle,
+  IonContent,
+} from "@ionic/react";
 interface ContainerProps {
   name: string;
 }
 
-const ExploreContainer: React.FC<ContainerProps> = ({ name }) => {
+const ExploreContainer: React.FC<ContainerProps> = () => {
   return (
-    <div className="container">
-      <strong>{name}</strong>
-      <p>Explore <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
-    </div>
+    <section className="container">
+      <IonCard>
+        <IonCardHeader>
+          <IonCardTitle>Card Title</IonCardTitle>
+          <IonCardSubtitle>Card Subtitle</IonCardSubtitle>
+        </IonCardHeader>
+
+        <IonCardContent>
+          Here's a small text description for the card content. Nothing more,
+          nothing less.
+        </IonCardContent>
+      </IonCard>
+    </section>
   );
 };
 
