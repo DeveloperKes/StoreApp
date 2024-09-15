@@ -1,0 +1,14 @@
+.search-container {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    color: #fefefe;
+    justify-content: space-around;
+    padding: .5rem 1rem;
+    position: sticky;
+    top: 0px;
+
+    & ion-icon {
+        cursor: pointer;
+    }
+}

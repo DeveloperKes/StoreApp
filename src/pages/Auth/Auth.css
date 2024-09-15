@@ -1,0 +1,53 @@
+main.auth-content {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 4rem 2rem;
+    flex-direction: column;
+    row-gap: 1rem;
+}
+
+ion-card.auth-content__card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* background-color: #fefefe; */
+
+    & ion-card-content {
+        width: 100%;
+    }
+}
+
+.auth-content__card__lottie {
+    width: 50%;
+}
+
+form.auth-content__card__form {
+    display: flex;
+    flex-direction: column;
+    row-gap: 1rem;
+}
+
+ion-button.auth-content__card__form__button {
+    color: #fefefe;
+    text-transform: capitalize;
+}
+
+ion-text.link {
+    display: flex;
+    align-items: center;
+    column-gap: .5rem;
+    cursor: pointer;
+
+    &:hover {
+        text-decoration: underline;
+    }
+}
+
+ion-title.auth-title {
+    display: flex;
+    align-items: center;
+    column-gap: .5rem;
+}
