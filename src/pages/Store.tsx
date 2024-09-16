@@ -32,7 +32,9 @@ export const Store: React.FC = () => {
 
   const handleGetAllProducts = () => {
     fetch(
-      `http://localhost:5137/api/products${user ? "?userId=" + user.id : ""}`
+      `https://storeapi-develop.up.railway.app/api/products${
+        user ? "?userId=" + user.id : ""
+      }`
     )
       .then((payload: any) => {
         return payload.json();

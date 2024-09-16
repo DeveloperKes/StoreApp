@@ -38,7 +38,7 @@ export const WishList: React.FC = () => {
     name: "up" | "down" | "no-set";
     price: "up" | "down" | "no-set";
   }>({
-    date: "up",
+    date: "no-set",
     name: "no-set",
     price: "no-set",
   });
@@ -46,7 +46,9 @@ export const WishList: React.FC = () => {
   const history = useHistory();
   useEffect(() => {
     if (user) {
-      fetch(`http://localhost:5137/api/wish/?userId=${user.id}`)
+      fetch(
+        `https://storeapi-develop.up.railway.app/api/wish/?userId=${user.id}`
+      )
         .then((payload: any) => {
           return payload.json();
         })
@@ -62,7 +64,7 @@ export const WishList: React.FC = () => {
   const handleFavorite = (productId: number) => {
     if (user) {
       handleUnfavorite(productId, user.id);
-      setTimeout(() => setChange(Date.now()), 10);
+      setTimeout(() => setChange(Date.now()), 200);
     }
   };
 
@@ -116,7 +118,8 @@ export const WishList: React.FC = () => {
         </IonToolbar>
       </IonHeader>
       <IonContent>
-        <section>
+        <section className="sorted">
+          <IonText>Ordenar favoritos por: </IonText>
           <IonButton
             onClick={() => {
               handleChangeSorted("name");

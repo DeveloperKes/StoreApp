@@ -3,7 +3,7 @@ export const useUnfavorite = () => {
   const handleUnfavorite = async (productId: number, userId: number) => {
     try {
       const reponse = await fetch(
-        `http://localhost:5137/api/wish?userId=${userId}&productId=${productId}`,
+        `https://storeapi-develop.up.railway.app/api/wish?userId=${userId}&productId=${productId}`,
         {
           method: "DELETE",
           headers: {

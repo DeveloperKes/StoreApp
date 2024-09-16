@@ -33,6 +33,10 @@ ion-button.product__button ion-icon {
     color: #fefefe;
 }
 
+ion-button.product__button {
+    text-transform: capitalize;
+}
+
 ion-button.product__button ion-icon {
     margin-left: .5rem;
 }
@@ -40,4 +44,19 @@ ion-button.product__button ion-icon {
 ion-text.product__date {
     font-size: .8rem;
     color: #a5a5a5;
+}
+
+section.sorted {
+    display: flex;
+    align-items: center;
+    column-gap: .5rem;
+    padding: .5rem;
+    position: sticky;
+    top: 0;
+    z-index: 1;
+    background-color: #1a1a1a;
+
+    & ion-button {
+        text-transform: capitalize;
+    }
 }

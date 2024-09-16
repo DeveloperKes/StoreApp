@@ -2,7 +2,7 @@ export const useFavorite = () => {
   //TODO: Estandarizar tipos
   const handleFavorite = async (productId: number, userId: number) => {
     try {
-      const reponse = await fetch("http://localhost:5137/api/wish/", {
+      const reponse = await fetch("https://storeapi-develop.up.railway.app/api/wish/", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

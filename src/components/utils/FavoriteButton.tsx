@@ -27,7 +27,7 @@ export const FavoriteButton: React.FC<{ id: number; initial: boolean }> = ({
       if (!favorite && user) handleFavorite(id, user.id);
       else if (user) handleUnfavorite(id, user.id);
 
-      if (user) setTimeout(() => setChange(Date.now()), 10);
+      if (user) setTimeout(() => setChange(Date.now()), 200);
     } else history.push("/login");
   };
 

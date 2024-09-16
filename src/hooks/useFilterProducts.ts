@@ -5,7 +5,7 @@ const useFilterProduct = () => {
     try {
       if (str != "") {
         const response = await fetch(
-          `http://localhost:5137/api/products/filter/?name=${str}`
+          `https://storeapi-develop.up.railway.app/api/products/filter/?name=${str}`
         );
         const products: Product[] = await response.json();
         return products;
