@@ -14,25 +14,46 @@ import { filter, searchCircle } from "ionicons/icons";
 import React, { useEffect, useState } from "react";
 import { ProductCard } from "../components/core/ProductCard";
 import "./Store.css";
+import useUserState from "../stores/useUserStore";
+import useWishChange from "../stores/useWishAdd";
+import { Product } from "../stores/useProductStore";
+import useFilterProduct from "../hooks/useFilterProducts";
 
 export const Store: React.FC = () => {
-  const [openFilter, setOpenFilter] = useState(false);
-  const [products, setProducts] = useState([]);
+  const { user } = useUserState();
+  const { change } = useWishChange();
+  const { handleFilter } = useFilterProduct();
+  const [products, setProducts] = useState<Product[]>([]);
+  let timerSearch: any;
 
   useEffect(() => {
-    fetch("http://localhost:5137/api/products")
+    handleGetAllProducts();
+  }, [change]);
+
+  const handleGetAllProducts = () => {
+    fetch(
+      `http://localhost:5137/api/products${user ? "?userId=" + user.id : ""}`
+    )
       .then((payload: any) => {
         return payload.json();
       })
-      .then((res: any) => {
+      .then((res: Product[]) => {
         setProducts(res);
       })
       .catch((err: any) => {
         console.error(err);
       });
-  }, []);
+  };
 
-  const handleSearch = (path: string) => {};
+  const handleSearch = async (e: CustomEvent) => {
+    clearTimeout(timerSearch);
+    const { value } = e.target as HTMLInputElement;
+    const filterResult = await handleFilter(value);
+    timerSearch = setTimeout(() => {
+      if (filterResult) setProducts(filterResult);
+      else handleGetAllProducts();
+    }, 500);
+  };
 
   return (
     <IonPage>
@@ -43,12 +64,11 @@ export const Store: React.FC = () => {
       </IonHeader>
       <IonContent>
         <div className="search-container">
-          <IonIcon icon={filter} />
           <IonSearchbar
             searchIcon={searchCircle}
             animated={true}
             placeholder="Buscar"
-            // onInput={handleSearch()}
+            onIonInput={handleSearch}
           ></IonSearchbar>
         </div>
         <IonGrid fixed={true}>
@@ -67,6 +87,8 @@ export const Store: React.FC = () => {
                   price={product.price}
                   categories={product.categories}
                   id={product.id}
+                  isFavorite={product.isFavorite}
+                  rate={product.rate}
                 />
               </IonCol>
             ))}

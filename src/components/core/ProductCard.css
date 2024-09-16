@@ -1,5 +1,11 @@
 ion-card.card {
     position: relative;
+    cursor: pointer;
+    transition: all ease-in-out 100ms;
+
+    &:hover {
+        box-shadow: 1px 1px 6px 2px #fefefe23;
+    }
 }
 
 ion-card-title.card__title {

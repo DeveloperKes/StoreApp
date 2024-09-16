@@ -1,0 +1,29 @@
+.profile__title {
+    font-size: 1rem;
+    font-weight: 600;
+}
+
+section.profile__list__item {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    row-gap: .3rem;
+
+    & ion-text:last-child {
+        font-size: 1.2rem;
+        font-weight: 500;
+    }
+}
+
+main.profile-content {
+    padding: .5rem;
+}
+
+ion-button.button-logout {
+    padding: .5rem 0px;
+
+    & ion-text {
+        color: #fefefe;
+    }
+}

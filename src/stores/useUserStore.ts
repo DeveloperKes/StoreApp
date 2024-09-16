@@ -6,11 +6,12 @@ export interface User {
   id: number;
   firstname: string;
   lastname: string;
+  [key: string]: string | number;
 }
 
 export interface UserState {
   user: User | null;
-  setUser: (newUser: User) => void;
+  setUser: (newUser: User | null) => void;
   removeUser: () => void;
 }
 
@@ -23,7 +24,7 @@ const useUserState = create<UserState>(
   (persist as userPersist)(
     (set) => ({
       user: null,
-      setUser: (newUser: User) =>
+      setUser: (newUser: User | null) =>
         set(() => ({
           user: newUser,
         })),

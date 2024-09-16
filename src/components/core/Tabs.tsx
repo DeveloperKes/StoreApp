@@ -15,6 +15,8 @@ import { IonReactRouter } from "@ionic/react-router";
 import useUserState from "../../stores/useUserStore";
 import { Login } from "../../pages/Auth/Login";
 import { Register } from "../../pages/Auth/Register";
+import { Details } from "../../pages/Details";
+import { Profile } from "../../pages/Profile";
 
 export const Tabs: React.FC = () => {
   const { user } = useUserState();
@@ -25,16 +27,19 @@ export const Tabs: React.FC = () => {
           <Route exact path="/store">
             <Store />
           </Route>
+          <Route exact path="/details">
+            <Details />
+          </Route>
           <Route exact path="/favorites">
-            <WishList />
+            {user != null ? <WishList /> : <Redirect to="/login" />}
           </Route>
-          <Route path="/profile">
-            <div></div>
+          <Route exact path="/profile">
+            {user != null ? <Profile /> : <Redirect to="/login" />}
           </Route>
-          <Route path="/login">
+          <Route exact path="/login">
             <Login />
           </Route>
-          <Route path="/register">
+          <Route exact path="/register">
             <Register />
           </Route>
           <Route exact path="/">

@@ -10,33 +10,41 @@ import React, { useState } from "react";
 import "./ProductCard.css";
 import { Icons } from "../../utils/utils";
 import { FavoriteButton } from "../utils/FavoriteButton";
+import useProductState, {
+  Category,
+  Product,
+} from "../../stores/useProductStore";
+import { useHistory } from "react-router";
 
-export interface Category {
-  id: number;
-  name: string;
-  icon: string;
-}
-export interface ProductCardProps {
-  id: number;
-  name: string;
-  image: string;
-  categories: Category[];
-  price: number;
-  description: string;
-}
-
-export const ProductCard: React.FC<ProductCardProps> = ({
+export const ProductCard: React.FC<Product> = ({
   categories,
   description,
   image,
   name,
   price,
   id,
-}: ProductCardProps) => {
+  isFavorite,
+  rate,
+}: Product) => {
+  const { product, setProduct } = useProductState();
+  const history = useHistory();
+  const handleDetails = () => {
+    setProduct({
+      categories,
+      description,
+      id,
+      image,
+      isFavorite,
+      name,
+      price,
+      rate,
+    });
+    setTimeout(() => history.push("/details"), 100);
+  };
   return (
     <IonCard className="card">
-      <img src={image} alt="Pending..." />
-      <FavoriteButton id={id} />
+      <img onClick={handleDetails} src={image} alt="Pending..." />
+      <FavoriteButton id={id} initial={isFavorite} />
       <IonCardHeader>
         <section className="card__categories">
           {categories.map((category: Category) => (
@@ -47,8 +55,10 @@ export const ProductCard: React.FC<ProductCardProps> = ({
             ></IonIcon>
           ))}
         </section>
-        <IonCardTitle className="card__title">{name}</IonCardTitle>
-        <IonCardSubtitle>
+        <IonCardTitle onClick={handleDetails} className="card__title">
+          {name}
+        </IonCardTitle>
+        <IonCardSubtitle onClick={handleDetails}>
           <IonText color="secondary">${price.toFixed(0)}</IonText>
         </IonCardSubtitle>
       </IonCardHeader>
