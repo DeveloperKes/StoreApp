@@ -28,7 +28,7 @@ export const Store: React.FC = () => {
 
   useEffect(() => {
     handleGetAllProducts();
-  }, [change]);
+  }, [change, user]);
 
   const handleGetAllProducts = () => {
     fetch(

@@ -203,7 +203,11 @@ export const WishList: React.FC = () => {
                   </h5>
                   <h5>
                     <IonText color="secondary">
-                      ${wish.product.price.toFixed(0)}
+                      {new Intl.NumberFormat("es-CO", {
+                        style: "currency",
+                        currency: "COP",
+                        minimumFractionDigits: 0,
+                      }).format(wish.product.price)}
                     </IonText>
                   </h5>
                   <IonButton

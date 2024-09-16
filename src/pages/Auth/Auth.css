@@ -18,10 +18,26 @@ ion-card.auth-content__card {
     & ion-card-content {
         width: 100%;
     }
+
+    @media screen and (max-width: 767px) {
+        overflow: auto;
+    }
+
+    @media screen and (min-width: 768px) {
+        flex-direction: row;
+        padding: 2.5rem;
+    }
+
+    @media screen and (min-width: 1368px) {
+        flex-direction: row;
+        width: 50%;
+        padding: 2.5rem;
+    }
 }
 
 .auth-content__card__lottie {
     width: 50%;
+
 }
 
 form.auth-content__card__form {

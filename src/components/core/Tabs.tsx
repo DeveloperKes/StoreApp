@@ -6,7 +6,7 @@ import {
   IonTabButton,
   IonTabs,
 } from "@ionic/react";
-import React from "react";
+import React, { useEffect } from "react";
 import { Redirect, Route } from "react-router";
 import { Store } from "../../pages/Store";
 import { WishList } from "../../pages/WishList";

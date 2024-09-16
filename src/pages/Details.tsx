@@ -36,34 +36,42 @@ export const Details: React.FC = () => {
         </IonToolbar>
       </IonHeader>
       <IonContent>
-        <IonImg src={product?.image} />
         <main className="details">
-          <section className="details__categories">
-            {product?.categories.map((category: Category) => (
-              <IonBadge
-                className="details__categories__category"
-                key={category.id}
-              >
-                <IonIcon icon={Icons[category.icon]} />
-                <IonText>{category.name}</IonText>
-              </IonBadge>
-            ))}
-          </section>
-          <section className="details__rate">
-            {[1, 2, 3, 4, 5].map((rate: number) => (
-              <IonIcon
-                icon={product?.rate || 0 >= rate ? star : starOutline}
-                className="details__rate__starRate"
-              ></IonIcon>
-            ))}
-            <IonText>({product?.rate})</IonText>
-          </section>
-          <section className="details__price">
-            <IonText>{`$${product?.price.toFixed(0)}`} </IonText>
-            <small>Envío gratis a todo el país</small>
-          </section>
-          <section className="details__description">
-            <IonText>{product?.description}</IonText>
+          <IonImg className="details__image" src={product?.image} />
+          <section className="details__content">
+            <section className="details__categories">
+              {product?.categories.map((category: Category) => (
+                <IonBadge
+                  className="details__categories__category"
+                  key={category.id}
+                >
+                  <IonIcon icon={Icons[category.icon]} />
+                  <IonText>{category.name}</IonText>
+                </IonBadge>
+              ))}
+            </section>
+            <section className="details__rate">
+              {[1, 2, 3, 4, 5].map((rate: number) => (
+                <IonIcon
+                  icon={(product?.rate || 0) >= rate ? star : starOutline}
+                  className="details__rate__starRate"
+                ></IonIcon>
+              ))}
+              <IonText>({product?.rate})</IonText>
+            </section>
+            <section className="details__price">
+              <IonText>
+                {new Intl.NumberFormat("es-CO", {
+                  style: "currency",
+                  currency: "COP",
+                  minimumFractionDigits: 0,
+                }).format(product?.price || 0)}
+              </IonText>
+              <small>Envío gratis a todo el país</small>
+            </section>
+            <section className="details__description">
+              <IonText>{product?.description}</IonText>
+            </section>
           </section>
         </main>
       </IonContent>

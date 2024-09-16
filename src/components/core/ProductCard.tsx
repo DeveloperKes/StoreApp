@@ -41,9 +41,16 @@ export const ProductCard: React.FC<Product> = ({
     });
     setTimeout(() => history.push("/details"), 100);
   };
+  const imageStyle = {
+    backgroundImage: `url(${image})`,
+  };
   return (
     <IonCard className="card">
-      <img onClick={handleDetails} src={image} alt="Pending..." />
+      <div
+        style={imageStyle}
+        className="card_image"
+        onClick={handleDetails}
+      ></div>
       <FavoriteButton id={id} initial={isFavorite} />
       <IonCardHeader>
         <section className="card__categories">
@@ -59,7 +66,13 @@ export const ProductCard: React.FC<Product> = ({
           {name}
         </IonCardTitle>
         <IonCardSubtitle onClick={handleDetails}>
-          <IonText color="secondary">${price.toFixed(0)}</IonText>
+          <IonText color="secondary">
+            {new Intl.NumberFormat("es-CO", {
+              style: "currency",
+              currency: "COP",
+              minimumFractionDigits: 0,
+            }).format(price)}
+          </IonText>
         </IonCardSubtitle>
       </IonCardHeader>
     </IonCard>

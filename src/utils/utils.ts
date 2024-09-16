@@ -1,4 +1,16 @@
-import { fitness, gameController, shirt } from "ionicons/icons";
+import {
+  fitness,
+  gameController,
+  people,
+  shirt,
+  paw,
+  home,
+  football,
+  airplane,
+  fastFood,
+  library,
+  thumbsUp,
+} from "ionicons/icons";
 
 export const Icons: {
   [key: string]: string;
@@ -6,6 +18,14 @@ export const Icons: {
   "game-controller": gameController,
   shirt: shirt,
   fitness: fitness,
+  people: people,
+  paw: paw,
+  home: home,
+  football: football,
+  airplane: airplane,
+  "fast-food": fastFood,
+  library: library,
+  "thumbs-up": thumbsUp,
 };
 
 export const validatorsRegex = {
